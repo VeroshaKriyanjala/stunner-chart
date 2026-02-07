@@ -1,0 +1,10 @@
+apiVersion: stunner.l7mp.io/v1
+kind: GatewayConfig
+metadata:
+  name: stunner-gateway-config
+  namespace: stunner-system
+spec:
+  authRef:
+    name: stunner-auth-secret
+    namespace: stunner-system
+  authType: static

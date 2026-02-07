@@ -1,0 +1,10 @@
+# This is the "Control Panel" for your STUNner server
+
+stunner:
+  # The Public IP of your EC2 instance (Required for K3s/EC2 setup)
+  externalIP: "100.24.116.18"  # <--- REPLACE THIS WITH YOUR ACTUAL IP
+  port: 3478
+
+auth:
+  username: "myuser"
+  password: "mypassword"

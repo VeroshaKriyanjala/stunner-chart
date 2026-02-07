@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webrtc-app
+  namespace: stunner-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webrtc-app
+  template:
+    metadata:
+      labels:
+        app: webrtc-app
+    spec:
+      containers:
+        - name: webrtc-app
+          image: veroshakriyanjala/webrtc-app:v1
+          ports:
+            - containerPort: 3000

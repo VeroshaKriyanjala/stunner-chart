@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webrtc-app-service
+  namespace: stunner-system
+spec:
+  type: LoadBalancer # On K3s/EC2, this exposes the port on the host
+  selector:
+    app: webrtc-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000 # We force port 30000 to make it easy to find
