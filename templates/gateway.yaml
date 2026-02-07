@@ -3,6 +3,7 @@ kind: GatewayClass
 metadata:
   name: stunner-gatewayclass
 spec:
+  publicIP : "100.24.116.18"
   controllerName: "stunner.l7mp.io/gateway-operator"
   parametersRef:
     group: stunner.l7mp.io
