@@ -2,7 +2,7 @@
 
 stunner:
   # The Public IP of your EC2 instance (Required for K3s/EC2 setup)
-  externalIP: "100.24.116.18"  # <--- REPLACE THIS WITH YOUR ACTUAL IP
+  externalIP: "100.24.116.18"
   port: 3478
 
 auth:
