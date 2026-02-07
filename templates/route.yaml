@@ -8,5 +8,5 @@ spec:
     - name: udp-gateway
   rules:
     - backendRefs:
-        - name: my-backend-service
-          port: 5000
+        - name: webrtc-app-service 
+          port: 3000
