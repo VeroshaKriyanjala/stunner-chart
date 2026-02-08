@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stunner
+  namespace: stunner-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stunner
+  template:
+    spec:
+      containers:
+        - name: stunner
+          image: l7mp/stunner:latest  # ← The actual TURN server!
+          ports:
+            - containerPort: 3478
+              protocol: UDP
