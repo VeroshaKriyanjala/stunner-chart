@@ -3,16 +3,47 @@ kind: Deployment
 metadata:
   name: stunner
   namespace: stunner-system
+  labels:
+    app: stunner
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: stunner
   template:
+    metadata:
+      labels:
+        app: stunner
     spec:
       containers:
         - name: stunner
-          image: l7mp/stunner:latest  # ← The actual TURN server!
+          image: l7mp/stunner:latest
+          imagePullPolicy: Always
+          command: ["stunnerd"]
+          args: ["-w", "--udp-thread-num=16"]
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
           ports:
-            - containerPort: 3478
+            - name: udp
+              containerPort: 3478
               protocol: UDP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stunner
+  namespace: stunner-system
+spec:
+  type: NodePort
+  selector:
+    app: stunner
+  ports:
+    - protocol: UDP
+      port: 3478
+      targetPort: 3478
+      nodePort: 30478
